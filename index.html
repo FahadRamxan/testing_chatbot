@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Drive In - Your Lifelong Road Trip Starts Here</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: #000;
+            color: #FDB714;
+            padding: 10px 0;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .banner-scroll {
+            display: flex;
+            gap: 50px;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .banner-scroll span {
+            display: inline-block;
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Header */
+        header {
+            background: #1a1a1a;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .logo span {
+            background: #FDB714;
+            color: #000;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #FDB714;
+        }
+
+        .branch-select {
+            color: #FDB714;
+            font-style: italic;
+        }
+
+        .register-btn {
+            background: #FDB714;
+            color: #000;
+            padding: 12px 30px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: transform 0.3s;
+        }
+
+        .register-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23333" width="1200" height="600"/><path d="M 0 300 Q 300 200 600 300 T 1200 300" stroke="%23555" stroke-width="100" fill="none"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tagline {
+            color: #FDB714;
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero h2 {
+            font-size: 64px;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .features li {
+            font-size: 28px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #FDB714;
+            font-size: 36px;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .hero-register-btn {
+            background: #FDB714;
+            color: #000;
+            padding: 18px 50px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 18px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .hero-register-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: #f5f5f5;
+            padding: 80px 50px;
+            color: #000;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 40px;
+            border-left: 5px solid #FDB714;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: #FDB714;
+            margin-bottom: 15px;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        .info-card p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            padding: 30px 50px;
+            text-align: center;
+        }
+
+        footer p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .features li {
+                font-size: 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+     
+        [id^="n8n-chat"],
+        .n8n-chat,
+        #n8n-chat,
+        #n8n-chat-container,
+        #n8n-chat-floating-button {
+            position: fixed !important;
+            z-index: 2147483647 !important;
+            pointer-events: auto;
+        }
+
+        /*i want to change the clr of cheat header to golden*/
+        #n8n-chat .chat-header {
+            color: #FDB714 !important;
+            background-color: #000 !important;
+        }
+        
+        #n8n-chat .chat-header .chat-heading {
+          font-size: 12px !important;
+          font-weight: 600 !important;
+        }
+        
+        #n8n-chat .chat-header .chat-heading::before {
+            content: "Hallo! 👋 Ich bin der KI-Assistent für die Fahrschule DriveIn Academy." "\A" "Dies ist derzeit eine Testversion des KI-Assistenten. Es kann sein, dass einige Antworten nicht korrekt sind.";
+            white-space: pre-line;
+        }
+        
+        #n8n-chat .chat-header h1,
+        #n8n-chat .chat-header p {
+          display: none !important;
+        }
+        
+        /* Make inner chat panel fill wrapper and stick to the right edge */
+        #n8n-chat .chat-window {
+            width: 100% !important;
+            margin: 0 0 0 auto !important; /* no gap on right */
+            box-sizing: border-box !important;
+            border-color: #000;
+        }
+        
+        /* Prevent icons/buttons from stretching */
+        #n8n-chat .chat-input-send-button,
+        #n8n-chat .chat-window-toggle {
+            width: auto !important;
+        }
+ 
+        #n8n-chat .chat-window-wrapper {
+            position: fixed !important;
+            bottom: 90px !important;
+            right: 20px !important;       
+            z-index: 9998 !important;
+            width: 330px;
+            height: 450px;
+            resize: both !important;       
+            overflow: hidden !important;
+            min-width: 280px !important;
+            min-height: 400px !important;
+            max-width: 100vw !important;
+            max-height: calc(100vh - 100px) !important;
+            border-radius: 15px !important;
+          } 
+          
+          /* Toggle button fixed at bottom */
+          #n8n-chat .chat-window-toggle {
+            position: fixed !important;
+            bottom: 20px !important;   
+            right: 20px !important;
+            z-index: 9999 !important;
+          
+            background: #FDB714 !important;  
+            border-radius: 50% !important;
+            padding: 8px !important;
+            width: 48px !important;      /* prevent stretching */
+            height: 48px !important;     /* prevent stretching */
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+          }
+        
+            /* Bot message bubble */
+         #n8n-chat .chat-message-from-bot {
+                background: #222 !important;
+                color: #ffffff !important;
+                align-self: flex-start !important;
+                border-radius: 4px !important;   
+                margin: 5px 0 !important;     
+                padding: 10px 12px !important;
+                border-radius: 10px !important;   
+                font-size: 12px !important;
+                line-height: 1.3 !important;
+               
+            }
+            
+            /* User message bubble (right side, green, rectangular) */
+            #n8n-chat .chat-message-from-user {
+                background: #FDB714 !important;   
+                color: #222 !important;
+                align-self: flex-end !important;
+                border-radius: 4px !important;   
+                width: fit-content !important;   
+                max-width: 70% !important;       
+                margin-left: auto !important;  
+                padding: 10px 12px !important;
+                border-radius: 10px !important;   
+                font-size: 12px !important;
+                line-height: 1.3 !important;
+                 
+            }
+
+            /* Make input placeholder smaller */
+            #n8n-chat .chat-input textarea::placeholder {
+                font-size: 13px !important;   
+                color: #888 !important;  
+                padding-top: 2px !important;     
+            }
+
+            /* User typing text (inside input box) */
+            #n8n-chat .chat-input textarea {
+                font-size: 15px !important;  
+                line-height: 1.5 !important;
+                color: #000 !important;       
+            }
+            
+            
+            /* Send arrow (button icon) color green */
+            #n8n-chat .chat-input-send-button svg {
+                fill: #FDB714 !important;    
+                color: #FDB714 !important;
+            }
+            
+
+            /* Bot message text */
+            #n8n-chat .chat-message-from-bot,
+            #n8n-chat .chat-message-from-bot p,
+            #n8n-chat .chat-message-from-bot span,
+            #n8n-chat .chat-message-from-bot .chat-message-markdown {
+            color: #ffffff !important;  
+            font-size: 13px !important;
+            }
+
+            /* User message text */
+            #n8n-chat .chat-message-from-user,
+            #n8n-chat .chat-message-from-user p,
+            #n8n-chat .chat-message-from-user span,
+            #n8n-chat .chat-message-from-user .chat-message-markdown {
+            color: #000 !important; 
+            font-size: 13px !important;  
+            }
+
+          
+            
+
+    </style>
+
+    <!-- n8n Chat Widget CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="top-banner">
+        <div class="banner-scroll">
+            <span>2X IN THE DISTRICT OF KLEVE</span>
+            <span>AIR-CONDITIONED TRAINING ROOMS</span>
+            <span>TRUCK THEORY IN 7 WORKING DAYS!</span>
+            <span>THEORY IN 7 WORKING DAYS!</span>
+            <span>DRIVING SIMULATORS</span>
+            <span>VIDEO TUTORIAL OF YOUR TEST AREA</span>
+            <span>2X IN THE DISTRICT OF KLEVE</span>
+            <span>AIR-CONDITIONED TRAINING ROOMS</span>
+            <span>TRUCK THEORY IN 7 WORKING DAYS!</span>
+            <span>THEORY IN 7 WORKING DAYS!</span>
+            <span>DRIVING SIMULATORS</span>
+            <span>VIDEO TUTORIAL OF YOUR TEST AREA</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <h1>ACADEMY</h1>
+            <span>Fahrschule Drive In</span>
+        </div>
+        <nav>
+            <a href="#" class="branch-select">SELECT BRANCH ▼</a>
+            <a href="#">GET YOUR DRIVER'S LICENSE</a>
+            <a href="#">OTHER OFFERS</a>
+            <a href="#">PROFESSIONAL DRIVER</a>
+        </nav>
+        <button class="register-btn">REGISTER NOW</button>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tagline">WE MAKE YOU MOBILE</p>
+            <h2>YOUR LIFELONG ROAD TRIP STARTS HERE</h2>
+            <ul class="features">
+                <li>Best Education</li>
+                <li>First-Class Team</li>
+                <li>Compact Training</li>
+                <li>Satisfaction</li>
+            </ul>
+            <button class="hero-register-btn">REGISTER NOW →</button>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Modern Training</h3>
+                <p>Experience learning in state-of-the-art, air-conditioned training rooms with the latest driving simulators and digital learning materials.</p>
+            </div>
+            <div class="info-card">
+                <h3>Fast Track Programs</h3>
+                <p>Get your theory completed in just 7 working days with our intensive programs. Perfect for those who want to get on the road quickly.</p>
+            </div>
+            <div class="info-card">
+                <h3>Expert Instructors</h3>
+                <p>Learn from certified, experienced instructors who are dedicated to your success and safety on the road.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Academy Fahrschule Drive In. All rights reserved.</p>
+    </footer>
+
+        <!-- n8n Chat Widget Script -->
+        <script type="module">
+            import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+            createChat({
+                webhookUrl: "https://brandilyst-ug.app.n8n.cloud/webhook/4c3b19d7-8809-457f-9208-e6e2d013f6fe/chat",
+                target: "#n8n-chat",
+                mode: "window",
+                loadPreviousSession: true,
+                metadata: {},
+                showWelcomeScreen: false,
+                defaultLanguage: "en",
+                initialMessages: [
+                  "Hallo! 👋",
+                  "Ich bin Karl. Ich kann Ihnen sowohl auf Deutsch als auch auf Englisch helfen."
+                ],
+                i18n: {
+                  en: {
+                    footer: "",
+                    getStarted: "New Conversation",
+                    inputPlaceholder: "Type your question..",
+                  },
+                },
+                enableStreaming: false,
+              });
+        
+            
+        </script>
+
+</body>
+</html>
